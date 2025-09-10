@@ -22,9 +22,14 @@ export default function Home() {
           <h2>Review your submissions and AI-Powered feedback.</h2>
         </div>
       </section>
-      {resumes.map((resume: Resume) => (
-        <ResumeCard key={resume.id} resume={resume} />
-      ))}
+
+      {resumes.length > 0 &&  (
+        <div className="resumes-section">
+          {resumes.map((resume: Resume) => (
+            <ResumeCard key={resume.id} resume={resume} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

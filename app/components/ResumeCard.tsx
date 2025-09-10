@@ -1,6 +1,8 @@
+import { resumes } from "../../constants";
+import {Link} from "react-router";
 const ResumeCard = () => {
   return (
-    <div>ResumeCard</div>
+    <Link to={`/resume/${resumes.id}`}>ResumeCard</Link>
   )
 }
 

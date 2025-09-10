@@ -1,5 +1,7 @@
+import ResumeCard from "~/components/ResumeCard";
 import type { Route } from "./+types/home";
 import NavBar from "~/components/NavBar";
+import { callbackify } from "util";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,5 +20,9 @@ export default function Home() {
         <h2>Review your submissions and AI-Powered feedback.</h2>
       </div>
     </section>
+    {/* {resumes.map((Resume) => (
+              <ResumeCard key={resume.id} resume={resume} />
+          ))} */}
+
   </main>
 }

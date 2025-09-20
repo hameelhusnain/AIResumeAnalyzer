@@ -27,8 +27,13 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
             <img src='./assets/public/icons/info.svg' alt='upload' className='size-20' />
         </div>
         {file ? (
-          <div>
-
+          <div className='text-center'>
+            <p className='tetx-lg text-gray-700 font-medium truncate'>
+              {file.name}
+            </p>
+            <p className='text-sm text-gray-500'>
+              {formatSize(file.size)}
+            </p>
           </div>
         ) : (
           <div>

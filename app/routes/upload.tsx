@@ -4,6 +4,13 @@ import FileUploader from "~/components/FileUploader"
 const upload = () => {
   const [isProcessing, setProcessing] = useState(false);
   const [statusText, setStatusText] = useState("");
+  const [ file, setFile] = useState<File | null>(null); 
+  
+  const handleFileSelect = (file: File | null) => {
+    setFile(file);
+  } 
+
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
   
   };
@@ -41,7 +48,7 @@ const upload = () => {
              </div>
              <div className="form-div">
               <label htmlFor="uploader">Uplaod Resume</label>
-              <FileUploader />
+              <FileUploader onFileSelect={handleFileSelect} />
              </div>
              <button className="primary-button" type="submit">
               Analyze Resume

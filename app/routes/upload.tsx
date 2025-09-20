@@ -12,7 +12,16 @@ const upload = () => {
 
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-  
+    e.preventDefault();
+    const form = e.currentTarget.closest("form");
+    if (!form) return;
+    const formData = new FormData(form); 
+    
+    const companyName = formData.get("company-name") as string;
+    const jobTitle = formData.get("job-title") as string;
+    const jobDescription = formData.get("job-description") as string;
+
+    console.log({companyName, jobTitle, jobDescription, file});
   };
 
   

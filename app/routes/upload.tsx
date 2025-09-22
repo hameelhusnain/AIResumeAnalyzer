@@ -10,6 +10,10 @@ const upload = () => {
     setFile(file);
   } 
 
+  const handleAnalyze = async ({companyName, jobTitle, jobDescription}: {companyName: string, jobTitle: string, jobDescription: string, file: File}) => {
+
+  }
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,10 +25,11 @@ const upload = () => {
     const jobTitle = formData.get("job-title") as string;
     const jobDescription = formData.get("job-description") as string;
 
-    console.log({companyName, jobTitle, jobDescription, file});
-  };
+    if(!file) return;
 
-  
+    handleAnalyze({companyName, jobTitle, jobDescription, file});
+
+  }
   return (
  <main className="bg-[url('assets/public/images/bg-main.svg')] bg-cover">
       <NavBar />

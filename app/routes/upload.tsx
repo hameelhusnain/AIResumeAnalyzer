@@ -5,7 +5,6 @@ import { usePuterStore } from "~/lib/puter"
 import { useNavigate } from "react-router"
 import { convertPdfToImage } from "~/lib/pdf2image"
 import { generateUUID } from "~/lib/utils"
-import { prepareInstructions } from "constants"
 const upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore()
   const navigate = useNavigate();
@@ -34,25 +33,7 @@ const upload = () => {
 
     setStatusText("Getting ATS Score...");
     const uuid = generateUUID();
-    const data = {
-      companyName,
-      jobTitle,
-      jobDescription,
-      id: uuid,
-      resumePath: uploadFile.path,
-      imagePath: uploadImage.path,
-      feedback: "",
-      
-    }
-    await kv.set(`resume:${uuid}`, JSON.stringify(data));
-    setStatusText("Analyzing Resume...");
-    const feedback = await ai.feedback(
-      uploadFile.path,
-      prepareInstructions({ jobTitle, jobDescription}
-    )
-    if (!feedback) return setStatusText("Error: Failed to analyze resume. Please try again...");
-    
-    const = typeof feedback.message.content === 'string' ? feedback.message.content : feedback.message.content[0].text ;
+    const data = {}
 
   }
 

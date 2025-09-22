@@ -3,6 +3,7 @@ import NavBar from "~/components/NavBar"
 import FileUploader from "~/components/FileUploader"
 import { usePuterStore } from "~/lib/puter"
 import { useNavigate } from "react-router"
+import { convertPdfToImage } from "~/lib/pdf2image"
 const upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore()
   const navigate = useNavigate();
@@ -21,7 +22,12 @@ const upload = () => {
     if(!uploadFile) return setStatusText("Failed to upload file. Please try again.");
 
     setStatusText("Generating Image...");
-    // const image = await convertPdfToImage(file);
+    if (!file) {
+      setStatusText("No file selected for conversion.");
+      setProcessing(false);
+      return;
+    }
+    const image = await convertPdfToImage(file);
 
 
   }

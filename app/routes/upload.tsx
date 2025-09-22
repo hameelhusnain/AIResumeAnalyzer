@@ -4,6 +4,7 @@ import FileUploader from "~/components/FileUploader"
 import { usePuterStore } from "~/lib/puter"
 import { useNavigate } from "react-router"
 import { convertPdfToImage } from "~/lib/pdf2image"
+import { generateUUID } from "~/lib/utils"
 const upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore()
   const navigate = useNavigate();
@@ -22,13 +23,26 @@ const upload = () => {
     if(!uploadFile) return setStatusText("Failed to upload file. Please try again.");
 
     setStatusText("Generating Image...");
-    if (!file) {
-      setStatusText("No file selected for conversion.");
-      setProcessing(false);
-      return;
-    }
-    const image = await convertPdfToImage(file);
+  
+    const image = await convertPdfToImage(file!);
+    if(!image.file) return setStatusText("Failed to convert PDF to image. Please try again.");
+    
+    setStatusText("Uploading Image...");
+    const uploadImage = await fs.upload([image.file]);
+    if(!uploadImage) return setStatusText("Failed to upload image. Please try again.");
 
+    setStatusText("Getting ATS Score...");
+    const uuid = generateUUID();
+    const data = {
+      companyName,
+      jobTitle,
+      jobDescription,
+      id: uuid,
+      resumePath: uploadFile.path,
+      imagePath: uploadImage.path,
+      feekbadk: "",
+      
+    }
 
   }
 

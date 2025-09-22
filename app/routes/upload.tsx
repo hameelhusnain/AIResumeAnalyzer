@@ -50,6 +50,9 @@ const upload = () => {
       uploadFile.path,
       prepareInstructions({ jobTitle, jobDescription}
     )
+    if (!feedback) return setStatusText("Error: Failed to analyze resume. Please try again...");
+    
+    const = typeof feedback.message.content === 'string' ? feedback.message.content : feedback.message.content[0].text ;
 
   }
 

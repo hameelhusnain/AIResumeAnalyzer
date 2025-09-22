@@ -1,7 +1,11 @@
 import { useState, type FormEvent } from "react"
 import NavBar from "~/components/NavBar"
 import FileUploader from "~/components/FileUploader"
+import { usePuterStore } from "~/lib/puter"
+import { useNavigate } from "react-router"
 const upload = () => {
+  const { auth, isLoading, fs, ai, kv } = usePuterStore()
+  const navigate = useNavigate();
   const [isProcessing, setProcessing] = useState(false);
   const [statusText, setStatusText] = useState("");
   const [ file, setFile] = useState<File | null>(null); 
@@ -11,6 +15,14 @@ const upload = () => {
   } 
 
   const handleAnalyze = async ({companyName, jobTitle, jobDescription}: {companyName: string, jobTitle: string, jobDescription: string, file: File}) => {
+    setProcessing(true);
+    setStatusText("Uploading and analyzing your resume...");
+    const uploadFile = await fs.upload([file!]);
+    if(!uploadFile) return setStatusText("Failed to upload file. Please try again.");
+
+    setStatusText("Generating Image...");
+    // const image = await convertPdfToImage(file);
+
 
   }
 

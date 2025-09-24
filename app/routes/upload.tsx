@@ -5,6 +5,7 @@ import { usePuterStore } from "~/lib/puter"
 import { useNavigate } from "react-router"
 import { convertPdfToImage } from "~/lib/pdf2image"
 import { generateUUID } from "~/lib/utils"
+import { prepareInstructions } from "../../constants"
 const upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore()
   const navigate = useNavigate();
@@ -19,22 +20,49 @@ const upload = () => {
   const handleAnalyze = async ({companyName, jobTitle, jobDescription}: {companyName: string, jobTitle: string, jobDescription: string, file: File}) => {
     setProcessing(true);
     setStatusText("Uploading and analyzing your resume...");
-    const uploadFile = await fs.upload([file!]);
-    if(!uploadFile) return setStatusText("Failed to upload file. Please try again.");
 
-    setStatusText("Generating Image...");
-  
-    const image = await convertPdfToImage(file!);
-    if(!image.file) return setStatusText("Failed to convert PDF to image. Please try again.");
-    
-    setStatusText("Uploading Image...");
-    const uploadImage = await fs.upload([image.file]);
-    if(!uploadImage) return setStatusText("Failed to upload image. Please try again.");
 
-    setStatusText("Getting ATS Score...");
+    const uploadedFile = await fs.upload([file!]);
+    if(!uploadedFile) return setStatusText("Failed to upload file. Please try again.");
+
+     setStatusText("Converting to images...");
+
+     const imageFile = await convertPdfToImage(file!);
+     if(!imageFile.file) return setStatusText("Failed to convert pdf to image. ");
+
+     setStatusText("Uploading image...");
+     const uploadedImage = await fs.upload([imageFile.file]);
+     if(!uploadedImage) return setStatusText("Failed to upload image. Please try again.");
+
+     setStatusText('Preparing data...');
     const uuid = generateUUID();
-    const data = {}
+    const data = {
+      id: uuid,
+      resumePath: uploadedFile.path,
+      imagePath: uploadedImage.path,
+      companyName, jobTitle, jobDescription,
+      feedback: '',
+    }
+    await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
+    setStatusText('Analyzing resume...');
+    const feedback = await ai.feedback(
+      uploadedFile.path,
+      prepareInstructions({jobTitle, jobDescription})
+    )
+
+    if(!feedback) return setStatusText('Error: Failed to analyze resume.');
+
+    const feedbackText = typeof feedback.message.content === 'string'
+      ? feedback.message.content
+      : feedback.message.content[0].text;
+
+      data.feedback = JSON.parse(feedbackText);
+      await kv.set(`resume:${uuid}`, JSON.stringify(data));
+      
+      setStatusText('Analysis complete! Redirecting...');
+      console.log(data);
+      
   }
 
 

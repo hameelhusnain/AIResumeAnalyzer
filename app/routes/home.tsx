@@ -22,7 +22,7 @@ export default function Home() {
         if(!auth.isAuthenticated) navigate('/auth?next=/');
     }, [auth.isAuthenticated,])
   return (
-    <main className="bg-[url('assets/public/images/bg-main.svg')] bg-cover">
+    <main className="bg-[url('/public/images/bg-main.svg')] bg-cover">
       <NavBar />
 
 

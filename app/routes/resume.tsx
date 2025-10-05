@@ -1,9 +1,9 @@
 import {Link, useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {usePuterStore} from "~/lib/puter";
-// import Summary from "~/components/Summary";
-// import ATS from "~/components/ATS";
-// import Details from "~/components/Details";
+import Summary from "~/components/Summary";
+import ATS from "~/components/ATS";
+import Details from "~/components/Details";
 
 export const meta = () => ([
     { title: 'Resumind | Review ' },
@@ -75,9 +75,9 @@ const Resume = () => {
                     <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-                            {/* <Summary feedback={feedback} />
+                            <Summary feedback={feedback} />
                             <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
-                            <Details feedback={feedback} /> */}
+                            <Details feedback={feedback} />
 
                             Summary ATS Details
                         </div>

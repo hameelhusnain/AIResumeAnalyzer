@@ -10,6 +10,8 @@ A modern, intelligent resume analysis tool that leverages AI to provide comprehe
 <img width="918" height="866" alt="image" src="https://github.com/user-attachments/assets/68ec2f8d-0648-4a49-93e8-3480c1a87411" />
 <img width="942" height="815" alt="image" src="https://github.com/user-attachments/assets/4a3c7856-82ed-45dd-a755-9d50a11b241b" />
 <img width="891" height="731" alt="image" src="https://github.com/user-attachments/assets/f3336cad-0aa7-4a83-8c14-6cb497423ff8" />
+<img width="1464" height="919" alt="image" src="https://github.com/user-attachments/assets/d1e0aa03-727c-4fb3-a792-02a1c7524140" />
+
 
 
 

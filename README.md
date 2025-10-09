@@ -6,6 +6,15 @@ A modern, intelligent resume analysis tool that leverages AI to provide comprehe
 ![React](https://img.shields.io/badge/React-18.x-61dafb.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6.svg)
 
+<img width="1878" height="659" alt="image" src="https://github.com/user-attachments/assets/4c70cf91-d01c-4b6c-b990-4873e149b731" />
+<img width="918" height="866" alt="image" src="https://github.com/user-attachments/assets/68ec2f8d-0648-4a49-93e8-3480c1a87411" />
+<img width="942" height="815" alt="image" src="https://github.com/user-attachments/assets/4a3c7856-82ed-45dd-a755-9d50a11b241b" />
+<img width="891" height="731" alt="image" src="https://github.com/user-attachments/assets/f3336cad-0aa7-4a83-8c14-6cb497423ff8" />
+
+
+
+
+
 ## ✨ Features
 
 ### Core Functionality

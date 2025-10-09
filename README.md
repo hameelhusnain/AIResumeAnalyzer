@@ -1,87 +1,204 @@
-# Welcome to React Router!
+🎯 AI Resume Analyzer
+A modern, intelligent resume analysis tool that leverages AI to provide comprehensive feedback and insights on resumes. Built with React and powered by Puter AI, this application helps job seekers optimize their resumes for better career opportunities.
+Show Image
+Show Image
+Show Image
+✨ Features
+Core Functionality
 
-A modern, production-ready template for building full-stack React applications using React Router.
+📄 Resume Upload & Parsing - Support for PDF and DOCX resume formats
+🤖 AI-Powered Analysis - Intelligent resume evaluation using Puter AI
+💡 Smart Recommendations - Personalized suggestions for improvement
+📊 Comprehensive Scoring - Detailed scoring across multiple dimensions
+🎯 Keyword Optimization - ATS-friendly keyword suggestions
+🔍 Skills Gap Analysis - Identify missing skills for target roles
+📈 Career Insights - Industry-specific recommendations
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Analysis Components
 
-## Features
+Content Quality Assessment - Evaluate clarity, impact, and relevance
+Formatting Review - Check structure, layout, and readability
+Keyword Matching - Analyze alignment with job requirements
+Experience Evaluation - Assess work history presentation
+Skills Assessment - Identify strengths and areas for improvement
+Achievement Highlighting - Suggestions for quantifying accomplishments
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+🚀 Tech Stack
+Frontend
 
-## Getting Started
+React 18.x - Modern React with Hooks
+React Router - Client-side routing and navigation
+TypeScript - Type-safe development
+TailwindCSS - Utility-first CSS framework
+Vite - Fast build tool and dev server
 
-### Installation
+AI & Processing
 
-Install the dependencies:
+Puter AI - AI-powered resume analysis and feedback generation
+PDF.js / pdf-parse - PDF document parsing
+Mammoth.js - DOCX document parsing
+Natural Language Processing - Text analysis and keyword extraction
 
-```bash
-npm install
-```
+Build & Development
 
-### Development
+Vite - Lightning-fast HMR and optimized builds
+ESLint - Code quality and consistency
+Prettier - Code formatting
+Docker - Containerization support
 
-Start the development server with HMR:
+📋 Prerequisites
+Before you begin, ensure you have the following installed:
 
-```bash
-npm run dev
-```
+Node.js (v18 or higher)
+npm or pnpm
+Git
 
-Your application will be available at `http://localhost:5173`.
+🛠️ Installation
 
-## Building for Production
+Clone the repository
 
-Create a production build:
+bashgit clone https://github.com/hameelhusnain/AIResumeAnalyzer.git
+cd AIResumeAnalyzer
 
-```bash
-npm run build
-```
+Install dependencies
 
-## Deployment
+bashnpm install
 
-### Docker Deployment
+Set up environment variables
+Create a .env file in the root directory:
 
-To build and run using Docker:
+envVITE_PUTER_API_KEY=your_puter_api_key_here
+VITE_APP_NAME=AI Resume Analyzer
 
-```bash
-docker build -t my-app .
+Start the development server
+
+bashnpm run dev
+The application will be available at http://localhost:5173
+🎮 Usage
+Analyzing a Resume
+
+Upload Your Resume
+
+Click on the upload area or drag and drop your resume (PDF or DOCX)
+Maximum file size: 5MB
+
+
+Wait for Analysis
+
+The AI will process your resume (typically 10-30 seconds)
+Progress indicator shows analysis status
+
+
+Review Results
+
+Overall score and rating
+Detailed feedback by section
+Actionable recommendations
+Keyword suggestions
+
+
+Implement Improvements
+
+Follow the suggestions provided
+Re-upload to see improvements
+Track your progress over time
+
+
+
+📁 Project Structure
+AIResumeAnalyzer/
+├── app/
+│   ├── components/          # React components
+│   │   ├── ResumeUploader/ # File upload component
+│   │   ├── AnalysisResults/ # Results display
+│   │   ├── ScoreCard/      # Score visualization
+│   │   └── Recommendations/ # Suggestions component
+│   ├── routes/             # Route components
+│   │   ├── _index.tsx      # Home page
+│   │   └── analyze.tsx     # Analysis page
+│   ├── services/           # Business logic
+│   │   ├── puterService.ts # Puter AI integration
+│   │   ├── parseService.ts # Resume parsing
+│   │   └── analysisService.ts # Analysis logic
+│   ├── types/              # TypeScript types
+│   ├── utils/              # Utility functions
+│   └── styles/             # Global styles
+├── public/                 # Static assets
+├── build/                  # Production build
+├── package.json
+├── vite.config.ts
+└── tailwind.config.ts
+🔧 Configuration
+Tailwind CSS
+The project uses TailwindCSS for styling. Configuration can be found in tailwind.config.ts.
+Vite Configuration
+Build and development settings are in vite.config.ts.
+TypeScript
+TypeScript configuration is in tsconfig.json for type safety.
+🚢 Deployment
+Build for Production
+bashnpm run build
+Docker Deployment
+bash# Build the Docker image
+docker build -t ai-resume-analyzer .
 
 # Run the container
-docker run -p 3000:3000 my-app
-```
+docker run -p 3000:3000 ai-resume-analyzer
+Platform Deployment
+The application can be deployed to:
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Vercel - Recommended for React apps
+Netlify - Simple static hosting
+AWS ECS - Containerized deployment
+Google Cloud Run - Serverless containers
+Azure Container Apps - Azure cloud deployment
+Railway - Easy full-stack deployment
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+🧪 Testing
+bash# Run tests
+npm test
 
-### DIY Deployment
+# Run tests with coverage
+npm run test:coverage
+🤝 Contributing
+Contributions are welcome! Please follow these steps:
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+Fork the repository
+Create a feature branch (git checkout -b feature/AmazingFeature)
+Commit your changes (git commit -m 'Add some AmazingFeature')
+Push to the branch (git push origin feature/AmazingFeature)
+Open a Pull Request
 
-Make sure to deploy the output of `npm run build`
+📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+👨‍💻 Author
+Hameel Husnain
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
+GitHub: @hameelhusnain
 
-## Styling
+🙏 Acknowledgments
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Puter - AI analysis engine
+React Router - Routing solution
+TailwindCSS - Styling framework
+Vite - Build tool
 
----
+📞 Support
+If you encounter any issues or have questions:
 
-Built with ❤️ using React Router.
+Open an issue on GitHub Issues
+Check the documentation
+
+🗺️ Roadmap
+
+ Multi-language support
+ Resume templates library
+ Job description matching
+ LinkedIn profile integration
+ Cover letter analysis
+ Interview preparation tips
+ Resume version history
+ Export analysis reports
+
+
+Made with ❤️ by Hameel Husnain | Powered by Puter AI
